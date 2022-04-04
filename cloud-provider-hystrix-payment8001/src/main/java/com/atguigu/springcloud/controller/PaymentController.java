@@ -16,18 +16,19 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @GetMapping("info/ok/{id}")
-    public String getPaymentInfo_OK(@PathVariable("id") Integer id){
+    public String getPaymentInfo_OK(@PathVariable("id") Integer id) {
         String res = paymentService.getPaymentInfo_OK(id);
         return res;
     }
+
     @GetMapping("info/error/{id}")
-    public String getPaymentInfo_Error(@PathVariable("id") Integer id){
+    public String getPaymentInfo_Error(@PathVariable("id") Integer id) {
         String res = paymentService.getPaymentInfo_Error(id);
         return res;
     }
 
     @GetMapping("info/circuit/{id}")
-    public String paymentCircuitBreaker(@PathVariable("id") Integer id){
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
         String res = paymentService.paymentCircuitBreaker(id);
         return res;
     }

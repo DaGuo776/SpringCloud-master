@@ -18,7 +18,7 @@ public class OrderController {
 
     @GetMapping("payment/zk")
     public String getpaymentInfo() {
-        String res = restTemplate.getForObject(PAYENT_URL+"/payment/zk",String.class);
+        String res = restTemplate.getForObject(PAYENT_URL + "/payment/zk", String.class);
         return res;
     }
 }

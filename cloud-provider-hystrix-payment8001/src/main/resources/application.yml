@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     service-url:
-#      defaultZone: http://www.eureka7001.com:7001/eureka/,http://www.eureka7002.com:7002/eureka/
+      #      defaultZone: http://www.eureka7001.com:7001/eureka/,http://www.eureka7002.com:7002/eureka/
       defaultZone: http://www.eureka7001.com:7001/eureka/
   instance:
     ip-address: 127.0.0.1

@@ -12,11 +12,12 @@ import java.util.UUID;
 public class MessageServiceImpl implements IMessageService {
 
     private MessageChannel output;  //消息发送通道
+
     @Override
     public String send() {
         String serial = UUID.randomUUID().toString();
         output.send(MessageBuilder.withPayload(serial).build());
-        System.out.println("***********serial:"+serial);
+        System.out.println("***********serial:" + serial);
         return serial;
     }
 }

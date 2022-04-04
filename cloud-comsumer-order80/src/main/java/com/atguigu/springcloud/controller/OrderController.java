@@ -28,11 +28,12 @@ public class OrderController {
 
     @GetMapping("payment/create")
     public CommonResult<Payment> create(Payment payment) {
-        return restTemplate.postForObject(PAYENT_URL+"/payment/create",payment,CommonResult.class);
+        return restTemplate.postForObject(PAYENT_URL + "/payment/create", payment, CommonResult.class);
     }
+
     @GetMapping("payment/selectOne/{id}")
     public CommonResult<Payment> getPayment(@PathVariable("id") long id) {
-        return restTemplate.getForObject(PAYENT_URL+"/payment/selectOne/"+id,CommonResult.class);
+        return restTemplate.getForObject(PAYENT_URL + "/payment/selectOne/" + id, CommonResult.class);
     }
 
     @GetMapping("payment/lb")
@@ -43,8 +44,8 @@ public class OrderController {
         }
         ServiceInstance serviceInstance = loadBalaner.instance(instances);
         URI uri = serviceInstance.getUri();
-        System.out.println(uri+"/payment/lb");
-        return restTemplate.getForObject(uri+"/payment/lb",String.class);
+        System.out.println(uri + "/payment/lb");
+        return restTemplate.getForObject(uri + "/payment/lb", String.class);
 //        return uri+"/payment/lb";
     }
 }

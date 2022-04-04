@@ -23,21 +23,23 @@ public class OrderController {
     }
 
     @GetMapping("info/ok/{id}")
-    public String paymentInfo_OK(@PathVariable("id") Integer id){
+    public String paymentInfo_OK(@PathVariable("id") Integer id) {
         String res = paymentHystrixService.paymentInfo_OK(id);
         System.out.println(res);
         return res;
-    };
+    }
+
+    ;
 
     @GetMapping("info/error/{id}")
-    @HystrixCommand(fallbackMethod = "paymentInfo_ERROR_Handler",commandProperties = {
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1500")
+    @HystrixCommand(fallbackMethod = "paymentInfo_ERROR_Handler", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
     })
-    public String paymentInfo_ERROR(@PathVariable("id") Integer id){
+    public String paymentInfo_ERROR(@PathVariable("id") Integer id) {
         return paymentHystrixService.paymentInfo_ERROR(id);
     }
 
-    public String paymentInfo_ERROR_Handler(@PathVariable("id") Integer id){
+    public String paymentInfo_ERROR_Handler(@PathVariable("id") Integer id) {
         return "80____paymentInfo_ERROR_Handler___异常返回";
     }
 }

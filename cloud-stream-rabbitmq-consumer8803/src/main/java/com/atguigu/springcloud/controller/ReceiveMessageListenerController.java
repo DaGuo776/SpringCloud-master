@@ -16,8 +16,8 @@ public class ReceiveMessageListenerController {
 
 
     @StreamListener(Sink.INPUT)
-    public void input(Message<String> message){
-        System.out.println("我是消费者1号，-----》接受到的消息是："+message.getPayload()+"\t"+serverPort);
+    public void input(Message<String> message) {
+        System.out.println("我是消费者1号，-----》接受到的消息是：" + message.getPayload() + "\t" + serverPort);
     }
 
 }

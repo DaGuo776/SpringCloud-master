@@ -18,7 +18,7 @@ public class OrderFeignController {
     private PaymentFeignService paymentFeignService;
 
     @GetMapping("selectOne/{id}")
-    public CommonResult<Payment> selectOne(@PathVariable("id") Long id){
+    public CommonResult<Payment> selectOne(@PathVariable("id") Long id) {
         return paymentFeignService.selectOne(id);
     }
 

@@ -9,6 +9,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class NacosOrderMain83 {
 
     public static void main(String[] args) {
-        SpringApplication.run(NacosOrderMain83.class,args);
+        SpringApplication.run(NacosOrderMain83.class, args);
     }
 }

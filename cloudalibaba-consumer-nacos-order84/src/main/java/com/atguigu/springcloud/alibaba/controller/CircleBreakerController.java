@@ -20,7 +20,7 @@ public class CircleBreakerController {
     @Value("${server.post}")
     private String serverPost;
 
-    public static final String SERVICE_URL="http://nacos-payment-provider";
+    public static final String SERVICE_URL = "http://nacos-payment-provider";
 
     @Resource
     private RestTemplate restTemplate;
@@ -30,10 +30,11 @@ public class CircleBreakerController {
 //    @SentinelResource(value = "fallback",fallback = "handlerFallback")  //fallback只负责业务异常
 //    @SentinelResource(value = "fallback",blockHandler = "blockHandler") //blockHandler只负责sentine控制台配置违规
 //    @SentinelResource(value = "fallback",fallback = "handlerFallback",blockHandler = "blockHandler") //handlerFallback和blockHandler都配置
-    @SentinelResource(value = "fallback",fallback = "handlerFallback",blockHandler = "blockHandler", exceptionsToIgnore = IllegalAccessException.class) //exceptionsToIgnore配置
+    @SentinelResource(value = "fallback", fallback = "handlerFallback", blockHandler = "blockHandler", exceptionsToIgnore = IllegalAccessException.class)
+    //exceptionsToIgnore配置
     public CommonResult<Payment> fallback(@PathVariable("id") Long id) {
-        CommonResult<Payment> result = restTemplate.getForObject(SERVICE_URL+"/paymentSQL/"+id,CommonResult.class,id);
-        if (id==4) {
+        CommonResult<Payment> result = restTemplate.getForObject(SERVICE_URL + "/paymentSQL/" + id, CommonResult.class, id);
+        if (id == 4) {
             throw new IllegalArgumentException("IllegalArgumentException,非法参数异常....");
         } else if (result.getData() == null) {
             throw new NullPointerException("NullPointerException,该ID没有对应记录，空指针异常");
@@ -42,13 +43,13 @@ public class CircleBreakerController {
     }
 
     public CommonResult handlerFallback(@PathVariable("id") Long id, Throwable e) {
-        Payment payment = new Payment(id,"null");
-        return new CommonResult(444,"兜底异常handlerFallback,exception内容"+e.getMessage(),payment);
+        Payment payment = new Payment(id, "null");
+        return new CommonResult(444, "兜底异常handlerFallback,exception内容" + e.getMessage(), payment);
     }
 
     public CommonResult blockHandler(@PathVariable("id") Long id, BlockException exception) {
-        Payment payment = new Payment(id,"null");
-        return new CommonResult(445,"兜底异常handlerFallback,exception内容"+exception.getMessage(),payment);
+        Payment payment = new Payment(id, "null");
+        return new CommonResult(445, "兜底异常handlerFallback,exception内容" + exception.getMessage(), payment);
     }
 
     //--------------Openfeign

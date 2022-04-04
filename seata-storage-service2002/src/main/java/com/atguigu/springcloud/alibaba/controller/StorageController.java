@@ -20,6 +20,6 @@ public class StorageController {
     public CommonResult decrease(@RequestParam("productId") Long productId,
                                  @RequestParam("count") Integer count) {
         storageService.decrease(productId, count);
-        return new CommonResult(200,"库存扣减成功，哈哈哈哈");
+        return new CommonResult(200, "库存扣减成功，哈哈哈哈");
     }
 }

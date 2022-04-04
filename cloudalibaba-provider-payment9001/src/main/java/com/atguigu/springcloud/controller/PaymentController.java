@@ -13,8 +13,8 @@ public class PaymentController {
     public String serverPort;
 
     @RequestMapping("/getPayment/{id}")
-    public String getPayment(@PathVariable("id") Integer id){
-        return "Alibaba Nacos server "+ serverPort+"-----"+id;
+    public String getPayment(@PathVariable("id") Integer id) {
+        return "Alibaba Nacos server " + serverPort + "-----" + id;
     }
 
 }

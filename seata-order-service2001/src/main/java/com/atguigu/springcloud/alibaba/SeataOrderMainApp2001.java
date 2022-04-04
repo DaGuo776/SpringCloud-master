@@ -11,6 +11,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 public class SeataOrderMainApp2001 {
     public static void main(String[] args) {
-        SpringApplication.run(SeataOrderMainApp2001.class,args);
+        SpringApplication.run(SeataOrderMainApp2001.class, args);
     }
 }

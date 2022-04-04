@@ -16,10 +16,10 @@ public class MyLB implements LoadBalaner {
         int next;
         do {
             current = this.atomicInteger.get();
-            next = current >= 2147483647 ? 0 : current+1;
+            next = current >= 2147483647 ? 0 : current + 1;
 
-        }while (!this.atomicInteger.compareAndSet(current,next));
-        System.out.println("------------第几次访问：次数next"+next);
+        } while (!this.atomicInteger.compareAndSet(current, next));
+        System.out.println("------------第几次访问：次数next" + next);
         return next;
     }
 

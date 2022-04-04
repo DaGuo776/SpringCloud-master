@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 @EnableHystrixDashboard
 public class DashboardMain9001 {
     public static void main(String[] args) {
-        SpringApplication.run(DashboardMain9001.class,args);
+        SpringApplication.run(DashboardMain9001.class, args);
     }
 
 }
